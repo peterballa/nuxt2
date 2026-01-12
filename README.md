@@ -4,6 +4,8 @@
 
 ## Build Setup
 
+Requirement: Node 16 (v16.20.2)
+
 ```bash
 # install dependencies
 
