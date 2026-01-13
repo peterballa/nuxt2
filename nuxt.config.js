@@ -1,5 +1,10 @@
 
 export default {
+  vue: {
+    config: {
+      devtools: true
+    }
+  },
   mode: 'universal',
   /*
   ** Headers of the page

@@ -23,3 +23,11 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Vue Devtools
+
+If you want use Vue.js devtools, then you should remove the latest one from the Chrome, because the Nuxt 2 (aka Vue 2) will only work with the legacy version.
+
+https://chromewebstore.google.com/detail/vuejs-devtools/iaajmlceplecbljialhhkmedjlpdblhp
+
+Beside dont forget set the  vue.config.devtools to true in the nuxt.config.js
