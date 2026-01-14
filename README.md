@@ -1,6 +1,6 @@
 # nuxt2
 
-> My unreal Nuxt.js project
+> My unreal Nuxt.js 2 Ecommerce Playground
 
 ## Build Setup
 
