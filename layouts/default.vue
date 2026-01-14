@@ -1,21 +1,22 @@
 <template>
   <div>
-    <header class="p-4 border-b">
-      <h1>Mini Travel Planner</h1>
+    <header>
+      <h1>Nuxt2 Ecommerce Playground</h1>
 
-      <nav class="mt-2">
+      <nav>
         <NuxtLink to="/" exact>Home</NuxtLink>
         <span> | </span>
-        <NuxtLink to="/destinations">Destinations</NuxtLink>
+        <NuxtLink to="/catalog">Catalog</NuxtLink>
+        <NuxtLink to="/checkout">Checkout</NuxtLink>
       </nav>
     </header>
 
-    <main class="p-4">
+    <main>
       <Nuxt />
     </main>
 
-    <footer class="p-4 border-t">
-      <small>Nuxt2 playground</small>
+    <footer>
+      <small>Nuxt2 Ecommerce Playground</small>
     </footer>
   </div>
 </template>

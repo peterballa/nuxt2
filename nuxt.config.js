@@ -27,7 +27,7 @@ export default {
   /*
   ** Global CSS
   */
-  css: [],
+  css: ['~/assets/scss/main.scss'],
   /*
   ** Plugins to load before mounting the App
   */
@@ -40,6 +40,8 @@ export default {
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/stylelint-module
     //'@nuxtjs/stylelint-module',
+    '@nuxtjs/composition-api/module',
+    '@pinia/nuxt',
   ],
   /*
   ** Nuxt.js modules
