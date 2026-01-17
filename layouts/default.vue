@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-// @ts-ignore - In some setups with Nuxt2/Pinia typings, storeToRefs may not be declared
 import { storeToRefs } from 'pinia'
 import Navbar from '~/components/molecules/Navbar.vue'
 import MiniCart from '~/components/molecules/MiniCart.vue'

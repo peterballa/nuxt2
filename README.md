@@ -9,7 +9,7 @@ Requirement: Node 16 (v16.20.2)
 ```bash
 # install dependencies
 
-$ npm install --legacy-peer-deps
+$ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev

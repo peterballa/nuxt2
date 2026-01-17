@@ -52,7 +52,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-// @ts-ignore - storeToRefs typings can be tricky in Nuxt2/Pinia combo
 import { storeToRefs } from 'pinia'
 import { useCartStore } from '~/stores/useCartStore'
 import type { CartItem } from '~/types/CartItem'
