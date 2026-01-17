@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { CartItem } from '~/types/cart-types'
+import { CartItem } from '~/types/CartItem'
 
 export const useCartStore = defineStore('cart', () => {
   // state
@@ -21,20 +21,21 @@ export const useCartStore = defineStore('cart', () => {
 
   // actions (methods)
   function add(item: CartItem) {
-    const existing = cartItems.value.find(i => i.id === item.id)
+    const existing = cartItems.value.find((i) => i.id === item.id)
 
     if (existing) {
       existing.quantity += item.quantity
-    } else {
-      cartItems.value.push({ ...item })
+      return
     }
+
+    cartItems.value.push({ ...item })
   }
 
-  function remove(itemId: CartItem['id']) {
-    cartItems.value = cartItems.value.filter(i => i.id !== itemId)
+  const remove = (itemId: CartItem['id']) => {
+    cartItems.value = cartItems.value.filter((i) => i.id !== itemId)
   }
 
-  function clear() {
+  const clear = () => {
     cartItems.value = []
   }
 
@@ -49,6 +50,6 @@ export const useCartStore = defineStore('cart', () => {
     // actions
     add,
     remove,
-    clear,
+    clear
   }
 })
