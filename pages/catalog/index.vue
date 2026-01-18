@@ -11,8 +11,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
-import { useContext } from '@nuxtjs/composition-api'
+import { defineComponent } from 'vue'
 import ProductCard from '~/components/molecules/ProductCard.vue'
 import { useCatalog } from '~/composables/useCatalog'
 import type { Product } from '~/types/Product'
@@ -25,21 +24,32 @@ export default defineComponent({
     return { title: 'Catalog' }
   },
   components: { ProductCard },
-  setup() {
-    const { $logger } = (useContext() as unknown) as { $logger: Logger }
-    const { products, load } = useCatalog($logger)
-    const items = ref<Product[]>([])
-    const cart = useCartStore()
-
-    onMounted(async () => {
-      await load()
-      items.value = products.slice()
-    })
-
-    const onAddToCart = (id: number) => {
-      const product = items.value.find((x) => x.id === id)
+  // NOTE: We intentionally use classic asyncData + data() + methods here
+  // instead of setup(), because for SSR the items are injected into the
+  // component's data by asyncData and are not directly available inside setup().
+  async asyncData(context) {
+    const { app } = context
+    const logger = (app.$logger as unknown) as Logger
+    const { products, load } = useCatalog(logger)
+    await load()
+    // On SSR this will end up in the component instance data as this.items
+    return {
+      items: products.slice()
+    }
+  },
+  data() {
+    return {
+      // asyncData-populated items will be placed here on SSR
+      items: [] as Product[]
+    }
+  },
+  methods: {
+    onAddToCart(this: any, id: number) {
+      const cart = useCartStore()
+      const items = this.items as Product[]
+      const product = items.find((p) => p.id === id)
       if (!product) {
-        return;
+        return
       }
 
       cart.add({
@@ -49,11 +59,6 @@ export default defineComponent({
         quantity: 1,
         image: product.image
       })
-    }
-
-    return {
-      items,
-      onAddToCart
     }
   }
 })
