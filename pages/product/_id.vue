@@ -33,15 +33,17 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
-import { useRoute } from '@nuxtjs/composition-api'
+import { useContext, useRoute } from '@nuxtjs/composition-api'
 import { useCatalog } from '~/composables/useCatalog'
 import type { Product } from '~/types/Product'
 import AddToCartButton from '~/components/atoms/AddToCartButton.vue'
 import { useCartStore } from '~/stores/useCartStore'
 import { formatPrice } from '~/utils/product-utils/product-utils'
+import { Logger } from '~/plugins/logger'
 
 export default defineComponent({
   name: 'ProductDetailPage',
+  middleware: 'product-exists',
   head() {
     return { title: 'Product Detail' }
   },
@@ -50,7 +52,8 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute()
-    const { loadById } = useCatalog()
+    const { $logger } = (useContext() as unknown) as { $logger: Logger }
+    const { loadById } = useCatalog($logger)
     const cart = useCartStore()
 
     const product = ref<Product | null>(null)

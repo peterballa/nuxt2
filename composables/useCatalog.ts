@@ -74,16 +74,14 @@ export interface UseCatalog {
   loadById: (id: number) => Promise<Product | undefined>
 }
 
-export const useCatalog = (): UseCatalog => {
-  const { $logger } = (useContext() as unknown) as { $logger: Logger }
-
+export const useCatalog = (logger: Logger): UseCatalog => {
   const products: Array<Product> = []
 
   const load = async () => {
     await sleep(500)
     // Replace current products with fixtures content
     products.splice(0, products.length, ...fixtures)
-    $logger.info('Loaded product catalog', { count: products.length })
+    logger.info('Loaded product catalog', { count: products.length })
   }
 
   const loadById = async (id: number): Promise<Product | undefined> => {
@@ -91,12 +89,12 @@ export const useCatalog = (): UseCatalog => {
     const product = fixtures.find((p) => p.id === id)
 
     if (product) {
-      $logger.info('Loaded product by id', {
+      logger.info('Loaded product by id', {
         id: product.id,
         name: product.name
       })
     } else {
-      $logger.error('Product not found by id', { id })
+      logger.error('Product not found by id', { id })
     }
 
     return product

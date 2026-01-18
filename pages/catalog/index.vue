@@ -12,10 +12,12 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
+import { useContext } from '@nuxtjs/composition-api'
 import ProductCard from '~/components/molecules/ProductCard.vue'
 import { useCatalog } from '~/composables/useCatalog'
 import type { Product } from '~/types/Product'
 import { useCartStore } from '~/stores/useCartStore'
+import { Logger } from '~/plugins/logger'
 
 export default defineComponent({
   name: 'CatalogPage',
@@ -24,7 +26,8 @@ export default defineComponent({
   },
   components: { ProductCard },
   setup() {
-    const { products, load } = useCatalog()
+    const { $logger } = (useContext() as unknown) as { $logger: Logger }
+    const { products, load } = useCatalog($logger)
     const items = ref<Product[]>([])
     const cart = useCartStore()
 
