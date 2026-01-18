@@ -36,7 +36,8 @@ export default {
     '~/plugins/pinia-nuxt-context.ts',
     '~/plugins/validator.ts',
     '~/plugins/logger.ts',
-    '~/plugins/analytics.ts'
+    '~/plugins/analytics.ts',
+    '~/plugins/translate.ts'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -53,7 +54,8 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-i18n'
   ],
   /*
    ** Axios module configuration
@@ -72,5 +74,14 @@ export default {
   },
   server: {
     port: 3333 // default: 3000
+  },
+  i18n: {
+    locales: [{ code: 'en', iso: 'en-US', file: 'en.json', name: 'English' }],
+    defaultLocale: 'en',
+    lazy: true,
+    langDir: 'locales/',
+    vueI18n: {
+      fallbackLocale: 'en'
+    }
   }
 }

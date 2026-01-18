@@ -1,20 +1,26 @@
 <template>
   <div class="cart">
-    <h1 class="cart__title">Your cart</h1>
+    <h1 class="cart__title">{{ $translate('page.cart.headline') }}</h1>
 
     <div v-if="cartItems.length === 0" class="cart__empty">
-      Your cart is empty.
+      {{ $translate('page.cart.empty') }}
     </div>
 
     <table v-else class="cart__table">
       <thead>
         <tr>
-          <th class="cart__col-media">Item</th>
-          <th class="cart__col-name" aria-label="Product name"></th>
-          <th class="cart__col-price">Price</th>
-          <th class="cart__col-qty">Qty</th>
-          <th class="cart__col-subtotal">Subtotal</th>
-          <th class="cart__col-actions" aria-label="Actions"></th>
+          <th class="cart__col-media">{{ $translate('page.cart.item') }}</th>
+          <th
+            class="cart__col-name"
+            :aria-label="$translate('page.cart.productName')"
+          ></th>
+          <th class="cart__col-price">{{ $translate('page.cart.price') }}</th>
+          <th class="cart__col-qty">{{ $translate('page.cart.quantity') }}</th>
+          <th class="cart__col-subtotal">{{ $translate('page.cart.subtotal') }}</th>
+          <th
+            class="cart__col-actions"
+            :aria-label="$translate('page.cart.actions')"
+          ></th>
         </tr>
       </thead>
       <tbody>
@@ -60,7 +66,7 @@ import { formatPrice } from '~/utils/product-utils/product-utils'
 export default defineComponent({
   name: 'CartPage',
   head() {
-    return { title: 'Cart' }
+    return { title: (this as any).$translate('page.cart.title') as string }
   },
   setup() {
     const cart = useCartStore()

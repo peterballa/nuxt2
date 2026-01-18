@@ -1,0 +1,44 @@
+{
+  "layout": {
+    "default": {
+      "title": "Nuxt2 Demo Shop"
+    }
+  },
+  "page": {
+    "index": {
+      "title": "Home"
+    },
+    "cart": {
+      "title": "Cart",
+      "headline": "Your cart",
+      "empty": "Your cart is empty.",
+      "item": "Item",
+      "productName": "Product name",
+      "price": "Price",
+      "quantity": "Qty",
+      "subtotal": "Subtotal",
+      "actions": "Actions",
+      "total": "Total"
+    },
+    "catalog": {
+      "title": "Catalog"
+    },
+    "product": {
+      "title": "Product Detail",
+      "loading": "Loading...",
+      "notFound": "Product not found.",
+      "sku": "SKU",
+      "description": "Description"
+    },
+    "plugins": {
+      "title": "Plugins Playground",
+      "hint": "Check the browser console to see logger output.",
+      "validatorDemo": "Validator & Logger custom plugins demo"
+    }
+  },
+  "component": {
+    "addToCart": {
+      "label": "Add to cart"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <button class="add-to-cart" type="button" @click="handleClick">
-    <span class="add-to-cart__label">Add to cart</span>
+    <span class="add-to-cart__label">{{ $translate('component.addToCart.label') }}</span>
   </button>
 </template>
 

@@ -45,7 +45,7 @@ export default defineComponent({
   name: 'ProductDetailPage',
   middleware: 'product-exists',
   head() {
-    return { title: 'Product Detail' }
+    return { title: (this as any).$translate('page.product.title') as string }
   },
   components: {
     AddToCartButton

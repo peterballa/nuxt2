@@ -1,11 +1,11 @@
 <template>
   <div class="plugins-page">
-    <h1>Plugins Playground</h1>
+    <h1>{{ $translate('page.plugins.title') }}</h1>
 
-    <p class="hint">Check the browser console to see logger output.</p>
+    <p class="hint">{{ $translate('page.plugins.hint') }}</p>
 
     <section class="plugins-section">
-      <h2>Validator & Logger custom plugins demo</h2>
+      <h2>{{ $translate('page.plugins.validatorDemo') }}</h2>
 
       <div class="field-group">
         <label for="email">

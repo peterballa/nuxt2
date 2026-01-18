@@ -27,7 +27,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'HomePage',
   head() {
-    return { title: 'Home' }
+    return { title: (this as any).$translate('page.index.title') as string }
   }
 })
 </script>
