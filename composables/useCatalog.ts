@@ -1,3 +1,5 @@
+import { useContext } from '@nuxtjs/composition-api'
+import { Logger } from '~/plugins/logger'
 import { Product } from '~/types/Product'
 
 // Simple sleep utility to simulate API latency
@@ -73,17 +75,31 @@ export interface UseCatalog {
 }
 
 export const useCatalog = (): UseCatalog => {
+  const { $logger } = (useContext() as unknown) as { $logger: Logger }
+
   const products: Array<Product> = []
 
   const load = async () => {
     await sleep(500)
     // Replace current products with fixtures content
     products.splice(0, products.length, ...fixtures)
+    $logger.info('Loaded product catalog', { count: products.length })
   }
 
   const loadById = async (id: number): Promise<Product | undefined> => {
     await sleep(500)
-    return fixtures.find((p) => p.id === id)
+    const product = fixtures.find((p) => p.id === id)
+
+    if (product) {
+      $logger.info('Loaded product by id', {
+        id: product.id,
+        name: product.name
+      })
+    } else {
+      $logger.error('Product not found by id', { id })
+    }
+
+    return product
   }
 
   return {

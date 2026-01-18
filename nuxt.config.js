@@ -35,7 +35,8 @@ export default {
   plugins: [
     '~/plugins/pinia-nuxt-context.ts',
     '~/plugins/validator.ts',
-    '~/plugins/logger.ts'
+    '~/plugins/logger.ts',
+    '~/plugins/analytics.ts'
   ],
   /*
    ** Nuxt.js dev-modules
