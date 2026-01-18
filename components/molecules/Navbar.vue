@@ -30,7 +30,6 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.5rem;
-  border-bottom: 1px solid #eee;
 
   &__links {
     display: flex;

@@ -31,7 +31,8 @@ export default defineComponent({
       navLinks: [
         { name: 'Home', path: '/' },
         { name: 'Catalog', path: '/catalog' },
-        { name: 'Cart', path: '/cart' }
+        { name: 'Cart', path: '/cart' },
+        { name: 'Plugins', path: '/plugins' }
       ]
     }
   },
@@ -46,7 +47,6 @@ export default defineComponent({
 <style>
 .site-header {
   padding: 0.75rem 1.5rem;
-  border-bottom: 1px solid #eee;
 }
 
 .site-header__row {
