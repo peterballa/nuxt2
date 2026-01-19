@@ -11,7 +11,7 @@ Requirement: Node 16 (v16.20.2)
 
 $ npm install
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:3333
 $ npm run dev
 
 # build for production and launch server
